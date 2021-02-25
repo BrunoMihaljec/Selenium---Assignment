@@ -18,21 +18,21 @@ namespace Selenium_Assignment.PageObjects
 
         public static IWebElement buttonLOGIN => WebDriver.driver.FindElement(By.Id("login-button"));
 
-        public static IWebElement textMessage => WebDriver.driver.FindElement(By.XPath("/html/body/div[2]/div[1]/div/div/form/h3"));
+        public static IWebElement textMessage => WebDriver.driver.FindElement(By.XPath("//*[@id='login_button_container']/div/form/h3"));
 
         public static IWebElement buttonX => WebDriver.driver.FindElement(By.XPath("//*[@id='login_button_container']/div/form/h3/button"));
 
         public static IWebElement textUsernames => WebDriver.driver.FindElement(By.XPath("//*[@id='login_credentials']"));
 
-        public static IWebElement textPassword => WebDriver.driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/div[2]"));
+        public static IWebElement textPassword => WebDriver.driver.FindElement(By.XPath("//*[@id='root']/div/div[2]/div[2]/div/div[2]"));
 
 
         public static void LogIn(string correctusername, string correctpassword, string incorrectusername, string incorrectpassword)
         {
             try
             {
-                SeleniumSetMethods.StepStart("Loads web page (https://www.saucedemo.com/index.html).", "1");
-                SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "index");               
+                SeleniumSetMethods.StepStart("Loads web page (https://www.saucedemo.com/).", "1");
+                SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "saucedemo");               
                 Console.WriteLine("Text box 'Username':");
                 SeleniumSetMethods.ElementDisplayed(textboxUsername);
                 SeleniumSetMethods.ElementEnabled(textboxUsername);
@@ -179,7 +179,7 @@ namespace Selenium_Assignment.PageObjects
             }
             catch (Exception e)
             {
-                Console.WriteLine("Login failed: {0}", e);
+                throw new Exception(String.Format("Test failed! {0}", e.StackTrace));
             }
         }
     }

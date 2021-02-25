@@ -58,6 +58,7 @@
     <Compile Include="Methods\SeleniumSetMethods.cs" />
     <Compile Include="PageObjects\Links\LinksProductsPageObject.cs" />
     <Compile Include="PageObjects\Links\LinksSearchPageObject.cs" />
+    <Compile Include="PageObjects\Saucedemo\SaucedemoInventoryPageObjects.cs" />
     <Compile Include="PageObjects\Saucedemo\SaucedemoLogInPageObjects.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

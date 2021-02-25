@@ -26,6 +26,29 @@ namespace Selenium_Assignment.Methods
             }
         }
 
+        public static void ElementHidden(IWebElement element)
+        {
+            try
+            {
+                //Print message if assert is true
+                string hidden = element.GetAttribute("tabindex");
+                if(hidden == "-1")
+                {
+                    Console.WriteLine(String.Format("{0} is hidden.", nameof(element)));
+                }
+                else
+                {
+                    Console.WriteLine(String.Format("{0} is shown.", nameof(element)));
+                }
+                
+            }
+            catch (Exception e)
+            {
+                //Print message if assert is false
+                throw new Exception(String.Format("Element is displayed! {0}", e.StackTrace));
+            }
+        }
+
         public static void ElementEmpty(IWebElement element)
         {
 
@@ -55,14 +78,15 @@ namespace Selenium_Assignment.Methods
             catch (Exception e)
             {
                 //Print message if assert is false
-                throw new Exception(String.Format("Element is not enabled! {0}", e.StackTrace));
+                throw new Exception(String.Format("Element is disabled! {0}", e.StackTrace));
             }
 
         }
+     
 
         public static void  StepStart(string stepname, string stepnumber)
         {
-            Console.WriteLine("Step {0} - {1}", stepnumber, stepname);
+            Console.WriteLine("\nStep {0} - {1}\n", stepnumber, stepname);
         }
 
         public static void Clears(IWebElement element)
