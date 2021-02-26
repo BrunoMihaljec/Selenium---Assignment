@@ -26,6 +26,7 @@ namespace Selenium_Assignment.PageObjects
                 SeleniumSetMethods.ElementEnabled(btnRačunala);
 
                 SeleniumSetMethods.StepStart("Clicks button 'Računala'.", "2");
+                SeleniumSetMethods.MoveToElement(btnRačunala, WebDriver.driver);
                 SeleniumSetMethods.Clicks(btnRačunala);
                 string urlSorted = WebDriver.driver.Url;
                 SeleniumSetMethods.WaitForPageToLoad(WebDriver.driver, 35);

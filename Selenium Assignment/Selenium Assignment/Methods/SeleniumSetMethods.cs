@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,14 @@ namespace Selenium_Assignment.Methods
                 //Print message if assert is false
                 throw new Exception(String.Format("Element is not displayed! {0}", e.StackTrace));
             }
+        }
+     
+
+        public static void MoveToElement(IWebElement element, IWebDriver driver)
+        {
+            Actions scroll = new Actions(driver);
+            scroll.MoveToElement(element);
+            scroll.Perform();
         }
 
         public static void ElementHidden(IWebElement element)

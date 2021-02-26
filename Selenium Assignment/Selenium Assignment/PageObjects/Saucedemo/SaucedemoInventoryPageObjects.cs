@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace Selenium_Assignment.PageObjects.Saucedemo
 {
@@ -71,6 +73,8 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
 
                 SeleniumSetMethods.StepStart("Clicks Menu button.", "3");
                 SeleniumSetMethods.Clicks(buttonMenu);
+                var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
+                wait.Until(ExpectedConditions.ElementIsVisible(By.Id("react-burger-cross-btn")));
 
                 Console.WriteLine("Button 'X':");
                 SeleniumSetMethods.ElementDisplayed(buttonX);
