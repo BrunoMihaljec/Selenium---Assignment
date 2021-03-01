@@ -90,6 +90,7 @@
     <Compile Include="Methods\SeleniumSetMethods.cs" />
     <Compile Include="PageObjects\Links\LinksProductsPageObject.cs" />
     <Compile Include="PageObjects\Links\LinksSearchPageObject.cs" />
+    <Compile Include="PageObjects\Saucedemo\SaucedemoCartPageObjects.cs" />
     <Compile Include="PageObjects\Saucedemo\SaucedemoInventoryPageObjects.cs" />
     <Compile Include="PageObjects\Saucedemo\SaucedemoLogInPageObjects.cs" />
     <Compile Include="Program.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Tests\Links\FirstTest.cs" />
     <Compile Include="Tests\Saucedemo\Test 1\FirstTest.cs" />
     <Compile Include="Tests\Saucedemo\Test 2\SecondTest.cs" />
+    <Compile Include="Tests\Saucedemo\Test 3\ThirdTest.cs" />
     <Compile Include="Tests\Setup.cs" />
     <Compile Include="Web Driver\WebDriver.cs" />
   </ItemGroup>

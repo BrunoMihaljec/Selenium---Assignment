@@ -61,8 +61,8 @@ namespace SpecFlow_Assignment.StepDefinitions
             
         }
 
-        [Given(@"I have loged in")]
-        public void GivenIHaveLogedIn()
+        [Given(@"I logged in")]
+        public void GivenILoggedIn()
         {
             WebDriver.driver.Navigate().GoToUrl("https://www.saucedemo.com/");
             Assert.IsTrue(WebDriver.driver.Url.Contains("saucedemo"));
@@ -75,8 +75,9 @@ namespace SpecFlow_Assignment.StepDefinitions
             usernameInputBox.SendKeys("standard_user");
             passwordInputBox.SendKeys("secret_sauce");
             loginbutton.Submit();
+        }      
 
-        }
+       
 
         [Given(@"I navigated to saucedemo inventory page")]
         public void GivenINavigatedToSaucedemoInventoryPage()
@@ -85,6 +86,7 @@ namespace SpecFlow_Assignment.StepDefinitions
             Assert.IsTrue(WebDriver.driver.Url.Contains("inventory"));
             Assert.IsTrue(WebDriver.driver.Title.Contains("Swag Labs"));
         }
+
 
         [Given(@"I entered correct username: '(.*)'")]
         public void GivenIEnteredCorrectUsername(string p0)

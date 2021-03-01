@@ -212,7 +212,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 31
-  testRunner.Given("I have loged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("I logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 32
   testRunner.And("I navigated to saucedemo inventory page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

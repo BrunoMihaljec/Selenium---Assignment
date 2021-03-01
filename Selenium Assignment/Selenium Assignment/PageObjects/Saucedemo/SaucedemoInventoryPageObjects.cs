@@ -36,8 +36,14 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
 
         public static IWebElement buttonResetappstate => WebDriver.driver.FindElement(By.XPath("//*[@id='reset_sidebar_link']"));
 
+        public static IWebElement buttonTwitter => WebDriver.driver.FindElement(By.XPath("//*[@id='page_wrapper']/footer/ul/li[1]"));
 
-        
+        public static IWebElement buttonFacebook => WebDriver.driver.FindElement(By.XPath("//*[@id='page_wrapper']/footer/ul/li[2]"));
+    
+        public static IWebElement buttonLinkedIn => WebDriver.driver.FindElement(By.XPath("//*[@id='page_wrapper']/footer/ul/li[3]"));
+
+
+
         public static void InventoryPage()
         {
             try
@@ -62,7 +68,16 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
                 SeleniumGetMethods.VerifyProduct(productcontainer, "Sauce Labs Bolt T-Shirt\nGet your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt.\n$15.99\nADD TO CART");
                 SeleniumGetMethods.VerifyProduct(productcontainer, "Sauce Labs Fleece Jacket\nIt's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.\n$49.99\nADD TO CART");
                 SeleniumGetMethods.VerifyProduct(productcontainer, "Sauce Labs Onesie\nRib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.\n$7.99\nADD TO CART");
-                SeleniumGetMethods.VerifyProduct(productcontainer, "Test.allTheThings() T-Shirt (Red)\nThis classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.\n$15.99\nADD TO CART");              
+                SeleniumGetMethods.VerifyProduct(productcontainer, "Test.allTheThings() T-Shirt (Red)\nThis classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.\n$15.99\nADD TO CART");
+                Console.WriteLine("Twitter button:");
+                SeleniumSetMethods.ElementDisplayed(buttonTwitter);
+                SeleniumSetMethods.ElementEnabled(buttonTwitter);
+                Console.WriteLine("Fcebook button:");
+                SeleniumSetMethods.ElementDisplayed(buttonFacebook);
+                SeleniumSetMethods.ElementEnabled(buttonFacebook);
+                Console.WriteLine("LinkedIn button:");
+                SeleniumSetMethods.ElementDisplayed(buttonLinkedIn);
+                SeleniumSetMethods.ElementEnabled(buttonLinkedIn);
                 text = SeleniumGetMethods.GetText(textbottom);
                 SeleniumGetMethods.VerifyText(text, "© 2021 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy");
 
@@ -94,7 +109,16 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
 
                 SeleniumSetMethods.StepStart("Clicks button 'X'.", "4");
                 SeleniumSetMethods.Clicks(buttonX);
+                wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
+                wait.Until(ExpectedConditions.ElementIsVisible(By.Id("react-burger-menu-btn")));
                 SeleniumSetMethods.ElementHidden(buttonX);
+
+                SeleniumSetMethods.StepStart("Clicks Cart button", "5");
+                wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
+                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='shopping_cart_container']")));
+                SeleniumSetMethods.Clicks(buttonCart);
+                SeleniumSetMethods.WaitForPageToLoad(WebDriver.driver, 35);
+                SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "cart");
 
             }
 

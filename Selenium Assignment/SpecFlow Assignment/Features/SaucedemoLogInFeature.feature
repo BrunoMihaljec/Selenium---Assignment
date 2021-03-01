@@ -28,7 +28,7 @@ Scenario: Saucedemo LogIn
 	| standard_user           | secret_sauce    |
 
 	Scenario: Saucedemo inventory page test
-		Given I have loged in
+		Given I logged in 
 		And I navigated to saucedemo inventory page
 		When I click Menu button
 		Then Menu has been displayed
