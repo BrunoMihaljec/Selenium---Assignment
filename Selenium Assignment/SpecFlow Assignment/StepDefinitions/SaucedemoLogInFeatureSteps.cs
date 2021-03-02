@@ -61,31 +61,7 @@ namespace SpecFlow_Assignment.StepDefinitions
             
         }
 
-        [Given(@"I logged in")]
-        public void GivenILoggedIn()
-        {
-            WebDriver.driver.Navigate().GoToUrl("https://www.saucedemo.com/");
-            Assert.IsTrue(WebDriver.driver.Url.Contains("saucedemo"));
-            Assert.IsTrue(WebDriver.driver.Title.Contains("Swag Labs"));
-            var usernameInputBox = WebDriver.driver.FindElement(By.Name("user-name"));
-            var passwordInputBox = WebDriver.driver.FindElement(By.Name("password"));
-            var loginbutton = WebDriver.driver.FindElement(By.Id("login-button"));
-            var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("login-button")));
-            usernameInputBox.SendKeys("standard_user");
-            passwordInputBox.SendKeys("secret_sauce");
-            loginbutton.Submit();
-        }      
-
-       
-
-        [Given(@"I navigated to saucedemo inventory page")]
-        public void GivenINavigatedToSaucedemoInventoryPage()
-        {
-            
-            Assert.IsTrue(WebDriver.driver.Url.Contains("inventory"));
-            Assert.IsTrue(WebDriver.driver.Title.Contains("Swag Labs"));
-        }
+        
 
 
         [Given(@"I entered correct username: '(.*)'")]
@@ -121,14 +97,7 @@ namespace SpecFlow_Assignment.StepDefinitions
 
         }
         
-        [When(@"I click Menu button")]
-        public void WhenIClickMenuButton()
-        {
-            var Menubutton = WebDriver.driver.FindElement(By.Id("react-burger-menu-btn"));
-            var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("react-burger-menu-btn")));
-            Menubutton.Submit();
-        }
+       
         
         [Then(@"the login should fail with '(.*)'")]
         public void ThenTheLoginShouldFailWith(string p0)
@@ -148,14 +117,6 @@ namespace SpecFlow_Assignment.StepDefinitions
             Assert.IsTrue(WebDriver.driver.Title.Contains("Swag Labs"));
         }
         
-        [Then(@"Menu has been displayed")]
-        public void ThenMenuHasBeenDisplayed()
-        {
-            var buttonX = WebDriver.driver.FindElement(By.Id("react-burger-cross-btn"));
-            var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));           
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("react-burger-cross-btn")));
-            string hidden = buttonX.GetAttribute("tabindex");
-            Assert.IsTrue(hidden == "0");          
-        }
+        
     }
 }

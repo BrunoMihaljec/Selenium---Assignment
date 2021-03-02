@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using System.Threading;
 
 namespace Selenium_Assignment.PageObjects.Saucedemo
 {
@@ -46,7 +47,11 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
 
         public static IWebElement buttonResetAppState => WebDriver.driver.FindElement(By.XPath("//*[@id='reset_sidebar_link']"));
 
+        public static IWebElement cartproductcontainer => WebDriver.driver.FindElement(By.XPath("//*[@id='cart_contents_container']/div/div[1]/div[3]"));
 
+        public static IWebElement textcart => WebDriver.driver.FindElement(By.XPath("//*[@id='shopping_cart_container']/a/span"));
+
+        
 
         public static void CartPage()
         {
@@ -58,8 +63,10 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
             Console.WriteLine("Cart button:");
             SeleniumSetMethods.ElementDisplayed(buttonCart);
             SeleniumSetMethods.ElementEnabled(buttonCart);
+            string text = SeleniumGetMethods.GetText(textcart);
+            SeleniumGetMethods.VerifyText(text, "1");
             Console.WriteLine("Main text:");
-            string text = SeleniumGetMethods.GetText(textMain);
+            text = SeleniumGetMethods.GetText(textMain);
             SeleniumGetMethods.VerifyText(text, "Your Cart");
             Console.WriteLine("'QTY' text:");
             text = SeleniumGetMethods.GetText(textQuantity);
@@ -67,6 +74,7 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
             Console.WriteLine("'DESCRIPTION' text:");
             text = SeleniumGetMethods.GetText(textDescription);
             SeleniumGetMethods.VerifyText(text, "DESCRIPTION");
+            SeleniumGetMethods.VerifyProduct(cartproductcontainer, "1\nSauce Labs Backpack\ncarry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.\n29.99REMOVE");
             Console.WriteLine("'CONTINUE SHOPPING' button:");
             SeleniumSetMethods.ElementDisplayed(buttonContinue);
             SeleniumSetMethods.ElementEnabled(buttonContinue);
@@ -104,6 +112,16 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
             Console.WriteLine("Button 'Reset App State':");
             SeleniumSetMethods.ElementDisplayed(buttonResetAppState);
             SeleniumSetMethods.ElementEnabled(buttonResetAppState);
+
+            SeleniumSetMethods.StepStart("Clicks button 'X' ", "3");
+            SeleniumSetMethods.Clicks(buttonX);
+            Thread.Sleep(2000);
+            SeleniumSetMethods.ElementHidden(buttonX);
+
+            SeleniumSetMethods.StepStart("Clicks 'CHECKOUT' button.", "4");
+            SeleniumSetMethods.Clicks(buttonCheckout);
+            SeleniumSetMethods.WaitForPageToLoad(WebDriver.driver, 35);
+            SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "checkout-step-one");
 
         }
     }

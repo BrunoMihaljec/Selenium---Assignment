@@ -42,7 +42,11 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
     
         public static IWebElement buttonLinkedIn => WebDriver.driver.FindElement(By.XPath("//*[@id='page_wrapper']/footer/ul/li[3]"));
 
+        public static IWebElement buttonaddtocart => WebDriver.driver.FindElement(By.XPath("//*[@id='inventory_container']/div/div[1]/div[3]/button"));
 
+        //public static IWebElement buttonRemove => WebDriver.driver.FindElement(By.XPath("//*[@id="inventory_container"]/div/div[1]/div[3]/button"));
+
+        public static IWebElement textCart => WebDriver.driver.FindElement(By.XPath("//*[@id='shopping_cart_container']/a/span"));
 
         public static void InventoryPage()
         {
@@ -113,7 +117,16 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
                 wait.Until(ExpectedConditions.ElementIsVisible(By.Id("react-burger-menu-btn")));
                 SeleniumSetMethods.ElementHidden(buttonX);
 
-                SeleniumSetMethods.StepStart("Clicks Cart button", "5");
+                SeleniumSetMethods.StepStart("Clicks Sauce Labs Backpack 'ADD TO CART' button.", "5");
+                SeleniumSetMethods.Clicks(buttonaddtocart);
+                text = SeleniumGetMethods.GetText(buttonaddtocart);
+                SeleniumGetMethods.VerifyText(text, "REMOVE");
+                Console.WriteLine("'REMOVE' button:");
+                text = SeleniumGetMethods.GetText(textCart);
+                Console.WriteLine("Cart button:");
+                SeleniumGetMethods.VerifyText(text, "1");
+
+                SeleniumSetMethods.StepStart("Clicks Cart button.", "6");
                 wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
                 wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='shopping_cart_container']")));
                 SeleniumSetMethods.Clicks(buttonCart);

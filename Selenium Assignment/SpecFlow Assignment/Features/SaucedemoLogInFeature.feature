@@ -1,4 +1,4 @@
-﻿Feature: SaucedemoLogInFeature In order to test login functionality on saucedemo
+﻿Feature: SaucedemoLogInFeature In order to test Login functionality on saucedemo
 As a developer
 I want to ensure functionality is working end to end
 @mytag
@@ -27,10 +27,6 @@ Scenario: Saucedemo LogIn
 	| CorrectUsername         | CorrectPassword |
 	| standard_user           | secret_sauce    |
 
-	Scenario: Saucedemo inventory page test
-		Given I logged in 
-		And I navigated to saucedemo inventory page
-		When I click Menu button
-		Then Menu has been displayed
+	
 
 
