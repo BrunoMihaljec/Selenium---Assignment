@@ -12,23 +12,13 @@ using Selenium_Assignment.Methods;
 namespace SpecFlow_Assignment.StepDefinitions
 {
     [Binding]
-    public class SaucedemoLogInFeatureSteps : IDisposable
+    public class SaucedemoLogInFeatureSteps
     {
         private string Username;
         private string Password;
         private string CorrectUsername;
         private string CorrectPassword;
         private string Message;
-
-        public void Dispose()
-        {
-
-            if (WebDriver.driver != null)
-            {
-                WebDriver.driver.Dispose();
-                WebDriver.driver = null;
-            }
-        }
 
         [Given(@"I have navigated to saucedemo website")]
         public void GivenIHaveNavigatedToSaucedemoWebsite()

@@ -6,8 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
-using Selenium_Assignment.PageObjects.Saucedemo;
-using Selenium_Assignment.PageObjects;
+using Selenium_Assignment.Tests;
 
 namespace SpecFlow_Assignment.Hooks
 {
@@ -17,14 +16,14 @@ namespace SpecFlow_Assignment.Hooks
 
         [BeforeScenario]
         public static void SetupTest()
-        { 
-            WebDriver.driver = new ChromeDriver(@"C:\Users\mihal\OneDrive\Desktop\New folder (2)");
+        {
+            Setup.Initialize();
         }
 
         [AfterScenario]
         public static void TearDown()
         {
-            WebDriver.driver.Close();
+            Setup.CleanUp();
         }
 
     }

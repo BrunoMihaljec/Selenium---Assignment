@@ -13,17 +13,8 @@ using Selenium_Assignment.Methods;
 namespace SpecFlow_Assignment.StepDefinitions
 {
     [Binding]
-    public class SaucedemoInventoryFeaturSteps : IDisposable
+    public class SaucedemoInventoryFeaturSteps
     {
-        public void Dispose()
-        {
-
-            if (WebDriver.driver != null)
-            {
-                WebDriver.driver.Dispose();
-                WebDriver.driver = null;
-            }
-        }
 
         [Given(@"I logged in")]
         public void GivenILoggedIn()

@@ -12,17 +12,8 @@ using Selenium_Assignment.PageObjects.Saucedemo;
 namespace SpecFlow_Assignment.StepDefinitions
 {
     [Binding]
-    public class SaucedemoCartFeatureSteps : IDisposable
-    {
-        public void Dispose()
-        {
-
-            if (WebDriver.driver != null)
-            {
-                WebDriver.driver.Dispose();
-                WebDriver.driver = null;
-            }
-        }
+    public class SaucedemoCartFeatureSteps
+    {      
 
         [Given(@"I logged in as standard user")]
         public void GivenILoggedInAsStandardUser()
