@@ -75,11 +75,11 @@ namespace SpecFlow_Assignment.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Cart page test")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("cart")]
         public virtual void CartPageTest()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "cart"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cart page test", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5

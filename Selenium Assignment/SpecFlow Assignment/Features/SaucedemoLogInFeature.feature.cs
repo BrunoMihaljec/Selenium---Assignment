@@ -75,7 +75,7 @@ namespace SpecFlow_Assignment.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Saucedemo failed LogIn")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("login")]
         [NUnit.Framework.TestCaseAttribute("", "", "Epic sadface: Username is required", null)]
         [NUnit.Framework.TestCaseAttribute("", "Mihaljec", "Epic sadface: Username is required", null)]
         [NUnit.Framework.TestCaseAttribute("Bruno", "", "Epic sadface: Password is required", null)]
@@ -85,7 +85,7 @@ namespace SpecFlow_Assignment.Features
         public virtual void SaucedemoFailedLogIn(string username, string password, string message, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "mytag"};
+                    "login"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));

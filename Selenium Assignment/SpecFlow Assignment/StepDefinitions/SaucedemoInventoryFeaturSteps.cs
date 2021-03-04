@@ -1,19 +1,20 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using Selenium_Assignment.Web_Driver;
 using SeleniumExtras.WaitHelpers;
+using Selenium_Assignment.Web_Driver;
 using System;
 using TechTalk.SpecFlow;
+using Selenium_Assignment.PageObjects;
+using Selenium_Assignment.PageObjects.Saucedemo;
+using Selenium_Assignment.Methods;
+
 
 namespace SpecFlow_Assignment.StepDefinitions
 {
     [Binding]
     public class SaucedemoInventoryFeaturSteps : IDisposable
     {
-        public SaucedemoInventoryFeaturSteps() => WebDriver.driver = new ChromeDriver(@"C:\Users\mihal\OneDrive\Desktop\New folder (2)");
-
         public void Dispose()
         {
 
@@ -27,17 +28,14 @@ namespace SpecFlow_Assignment.StepDefinitions
         [Given(@"I logged in")]
         public void GivenILoggedIn()
         {
+            
             WebDriver.driver.Navigate().GoToUrl("https://www.saucedemo.com/");
-            Assert.IsTrue(WebDriver.driver.Url.Contains("saucedemo"));
-            Assert.IsTrue(WebDriver.driver.Title.Contains("Swag Labs"));
-            var usernameInputBox = WebDriver.driver.FindElement(By.Name("user-name"));
-            var passwordInputBox = WebDriver.driver.FindElement(By.Name("password"));
-            var loginbutton = WebDriver.driver.FindElement(By.Id("login-button"));
+            SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "saucedemo");
             var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id("login-button")));
-            usernameInputBox.SendKeys("standard_user");
-            passwordInputBox.SendKeys("secret_sauce");
-            loginbutton.Submit();
+            SeleniumSetMethods.EnterText(SaucedemoLogInPageObjects.textboxUsername, "standard_user");
+            SeleniumSetMethods.EnterText(SaucedemoLogInPageObjects.textboxPassword, "secret_sauce");
+            SeleniumSetMethods.Submits(SaucedemoLogInPageObjects.buttonLOGIN);
         }
 
 
@@ -45,28 +43,25 @@ namespace SpecFlow_Assignment.StepDefinitions
         [Given(@"I navigated to saucedemo inventory page")]
         public void GivenINavigatedToSaucedemoInventoryPage()
         {
-
-            Assert.IsTrue(WebDriver.driver.Url.Contains("inventory"));
-            Assert.IsTrue(WebDriver.driver.Title.Contains("Swag Labs"));
+            SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "inventory");
+            
         }
 
         [When(@"I click Menu button")]
         public void WhenIClickMenuButton()
-        {
-            var Menubutton = WebDriver.driver.FindElement(By.Id("react-burger-menu-btn"));
+        {           
             var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id("react-burger-menu-btn")));
-            Menubutton.Submit();
+            SeleniumSetMethods.Clicks(SaucedemoInventoryPageObjects.buttonMenu);
         }
 
         [Then(@"Menu has been displayed")]
         public void ThenMenuHasBeenDisplayed()
-        {
-            var buttonX = WebDriver.driver.FindElement(By.Id("react-burger-cross-btn"));
+        {           
             var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id("react-burger-cross-btn")));
-            string hidden = buttonX.GetAttribute("tabindex");
-            Assert.IsTrue(hidden == "0");
+            SeleniumSetMethods.ElementHidden(SaucedemoInventoryPageObjects.buttonX);
+            
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿Feature: SaucedemoLogInFeature In order to test Login functionality on saucedemo
 As a developer
 I want to ensure functionality is working end to end
-@mytag
+@login
 Scenario: Saucedemo failed LogIn
 	Given I have navigated to saucedemo website	
 	And I entered '<Username>' as username

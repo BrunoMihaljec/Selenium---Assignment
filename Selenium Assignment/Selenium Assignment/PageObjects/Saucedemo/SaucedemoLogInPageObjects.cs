@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Selenium_Assignment.PageObjects
 {
-    static class SaucedemoLogInPageObjects
+     public static class SaucedemoLogInPageObjects
     {
 
-        public static IWebElement textboxUsername => WebDriver.driver.FindElement(By.Name("user-name"));
+        public static IWebElement textboxUsername => WebDriver.driver.FindElement(By.Id("user-name"));
 
         public static IWebElement textboxPassword => WebDriver.driver.FindElement(By.Name("password"));
 
@@ -25,25 +25,20 @@ namespace Selenium_Assignment.PageObjects
         public static IWebElement textUsernames => WebDriver.driver.FindElement(By.XPath("//*[@id='login_credentials']"));
 
         public static IWebElement textPassword => WebDriver.driver.FindElement(By.XPath("//*[@id='root']/div/div[2]/div[2]/div/div[2]"));
-
-
+        
+        
         public static void LogIn(string correctusername, string correctpassword, string incorrectusername, string incorrectpassword)
         {
             try
-            {
+            {                
                 SeleniumSetMethods.StepStart("Loads web page (https://www.saucedemo.com/).", "1");
                 SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "saucedemo");               
                 Console.WriteLine("Text box 'Username':");
-                SeleniumSetMethods.ElementDisplayed(textboxUsername);
-                SeleniumSetMethods.ElementEnabled(textboxUsername);
-                SeleniumSetMethods.ElementEmpty(textboxUsername);
+                SeleniumSetMethods.ElementDisplayedEnabledAndEmpty(textboxUsername);
                 Console.WriteLine("Text box 'Password':");
-                SeleniumSetMethods.ElementDisplayed(textboxPassword);
-                SeleniumSetMethods.ElementEnabled(textboxPassword);
-                SeleniumSetMethods.ElementEmpty(textboxPassword);
+                SeleniumSetMethods.ElementDisplayedEnabledAndEmpty(textboxPassword);
                 Console.WriteLine("Button 'LOGIN':");
-                SeleniumSetMethods.ElementDisplayed(buttonLOGIN);
-                SeleniumSetMethods.ElementEnabled(buttonLOGIN);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonLOGIN);
 
 
                 string Usernames = SeleniumGetMethods.GetText(textUsernames).Replace("\r", string.Empty);
@@ -56,8 +51,7 @@ namespace Selenium_Assignment.PageObjects
                 SeleniumSetMethods.StepStart("Submits button 'LOGIN'.", "2");
                 SeleniumSetMethods.Submits(buttonLOGIN);
                 Console.WriteLine("Button 'X':");
-                SeleniumSetMethods.ElementDisplayed(buttonX);
-                SeleniumSetMethods.ElementEnabled(buttonX);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonX);
                 string message = SeleniumGetMethods.GetText(textMessage);
                 SeleniumGetMethods.VerifyText(message, "Epic sadface: Username is required");
 
@@ -69,8 +63,7 @@ namespace Selenium_Assignment.PageObjects
                 SeleniumSetMethods.StepStart("Submits button 'LOGIN'.", "4");
                 SeleniumSetMethods.Submits(buttonLOGIN);
                 Console.WriteLine("Button 'X':");
-                SeleniumSetMethods.ElementDisplayed(buttonX);
-                SeleniumSetMethods.ElementEnabled(buttonX);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonX);
                 message = SeleniumGetMethods.GetText(textMessage);
                 SeleniumGetMethods.VerifyText(message, "Epic sadface: Username is required");
 
@@ -86,8 +79,7 @@ namespace Selenium_Assignment.PageObjects
                 SeleniumSetMethods.StepStart("Submits button 'LOGIN'.", "7");
                 SeleniumSetMethods.Submits(buttonLOGIN);
                 Console.WriteLine("Button 'X':");
-                SeleniumSetMethods.ElementDisplayed(buttonX);
-                SeleniumSetMethods.ElementEnabled(buttonX);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonX);
                 message = SeleniumGetMethods.GetText(textMessage);
                 SeleniumGetMethods.VerifyText(message, "Epic sadface: Password is required");
 
@@ -106,8 +98,7 @@ namespace Selenium_Assignment.PageObjects
                 SeleniumSetMethods.StepStart("Submits button 'LOGIN'.", "10");
                 SeleniumSetMethods.Submits(buttonLOGIN);
                 Console.WriteLine("Button 'X':");
-                SeleniumSetMethods.ElementDisplayed(buttonX);
-                SeleniumSetMethods.ElementEnabled(buttonX);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonX);
                 message = SeleniumGetMethods.GetText(textMessage);
                 SeleniumGetMethods.VerifyText(message, "Epic sadface: Username and password do not match any user in this service");
 
@@ -128,8 +119,7 @@ namespace Selenium_Assignment.PageObjects
                 SeleniumSetMethods.StepStart("Submits button 'LOGIN'.", "13");
                 SeleniumSetMethods.Submits(buttonLOGIN);
                 Console.WriteLine("Button 'X':");
-                SeleniumSetMethods.ElementDisplayed(buttonX);
-                SeleniumSetMethods.ElementEnabled(buttonX);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonX);
                 message = SeleniumGetMethods.GetText(textMessage);
                 SeleniumGetMethods.VerifyText(message, "Epic sadface: Username and password do not match any user in this service");
 
@@ -150,8 +140,7 @@ namespace Selenium_Assignment.PageObjects
                 SeleniumSetMethods.StepStart("Submits button 'LOGIN'.", "16");
                 SeleniumSetMethods.Submits(buttonLOGIN);
                 Console.WriteLine("Button 'X':");
-                SeleniumSetMethods.ElementDisplayed(buttonX);
-                SeleniumSetMethods.ElementEnabled(buttonX);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonX);
                 message = SeleniumGetMethods.GetText(textMessage);
                 SeleniumGetMethods.VerifyText(message, "Epic sadface: Username and password do not match any user in this service");
 

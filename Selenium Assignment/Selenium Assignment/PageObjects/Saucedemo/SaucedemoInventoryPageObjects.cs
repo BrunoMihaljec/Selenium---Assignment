@@ -11,7 +11,7 @@ using SeleniumExtras.WaitHelpers;
 
 namespace Selenium_Assignment.PageObjects.Saucedemo
 {
-    static class SaucedemoInventoryPageObjects
+    public static class SaucedemoInventoryPageObjects
     {
         
         public static IWebElement buttonMenu => WebDriver.driver.FindElement(By.Id("react-burger-menu-btn"));
@@ -44,8 +44,6 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
 
         public static IWebElement buttonaddtocart => WebDriver.driver.FindElement(By.XPath("//*[@id='inventory_container']/div/div[1]/div[3]/button"));
 
-        //public static IWebElement buttonRemove => WebDriver.driver.FindElement(By.XPath("//*[@id="inventory_container"]/div/div[1]/div[3]/button"));
-
         public static IWebElement textCart => WebDriver.driver.FindElement(By.XPath("//*[@id='shopping_cart_container']/a/span"));
 
         public static void InventoryPage()
@@ -55,17 +53,14 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
                 SeleniumSetMethods.StepStart("Loads web page (https://www.saucedemo.com/inventory.html).", "1");
                 SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "inventory");
                 Console.WriteLine("Menu button:");
-                SeleniumSetMethods.ElementDisplayed(buttonMenu);
-                SeleniumSetMethods.ElementEnabled(buttonMenu);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonMenu);
                 Console.WriteLine("Cart button:");
-                SeleniumSetMethods.ElementDisplayed(buttonCart);
-                SeleniumSetMethods.ElementEnabled(buttonCart);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonCart);
                 Console.WriteLine("Main text:");
                 string text = SeleniumGetMethods.GetText(textMain);
                 SeleniumGetMethods.VerifyText(text, "Products");
                 Console.WriteLine("DropDown menu:");
-                SeleniumSetMethods.ElementDisplayed(dropdownFilter);
-                SeleniumSetMethods.ElementEnabled(dropdownFilter);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(dropdownFilter);
                 Console.WriteLine("Product List:");        
                 SeleniumGetMethods.VerifyProduct(productcontainer, "Sauce Labs Backpack\ncarry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.\n$29.99\nADD TO CART");
                 SeleniumGetMethods.VerifyProduct(productcontainer, "Sauce Labs Bike Light\nA red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.\n$9.99\nADD TO CART");
@@ -74,14 +69,11 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
                 SeleniumGetMethods.VerifyProduct(productcontainer, "Sauce Labs Onesie\nRib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.\n$7.99\nADD TO CART");
                 SeleniumGetMethods.VerifyProduct(productcontainer, "Test.allTheThings() T-Shirt (Red)\nThis classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.\n$15.99\nADD TO CART");
                 Console.WriteLine("Twitter button:");
-                SeleniumSetMethods.ElementDisplayed(buttonTwitter);
-                SeleniumSetMethods.ElementEnabled(buttonTwitter);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonTwitter);
                 Console.WriteLine("Fcebook button:");
-                SeleniumSetMethods.ElementDisplayed(buttonFacebook);
-                SeleniumSetMethods.ElementEnabled(buttonFacebook);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonFacebook);
                 Console.WriteLine("LinkedIn button:");
-                SeleniumSetMethods.ElementDisplayed(buttonLinkedIn);
-                SeleniumSetMethods.ElementEnabled(buttonLinkedIn);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonLinkedIn);
                 text = SeleniumGetMethods.GetText(textbottom);
                 SeleniumGetMethods.VerifyText(text, "© 2021 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy");
 
@@ -96,20 +88,15 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
                 wait.Until(ExpectedConditions.ElementIsVisible(By.Id("react-burger-cross-btn")));
 
                 Console.WriteLine("Button 'X':");
-                SeleniumSetMethods.ElementDisplayed(buttonX);
-                SeleniumSetMethods.ElementEnabled(buttonX);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonX);
                 Console.WriteLine("Button 'All Items':");
-                SeleniumSetMethods.ElementDisplayed(buttonAllitems);
-                SeleniumSetMethods.ElementEnabled(buttonAllitems);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonAllitems);
                 Console.WriteLine("Button 'About':");
-                SeleniumSetMethods.ElementDisplayed(buttonAbout);
-                SeleniumSetMethods.ElementEnabled(buttonAbout);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonAbout);
                 Console.WriteLine("Button 'Logout':");
-                SeleniumSetMethods.ElementDisplayed(buttonLogout);
-                SeleniumSetMethods.ElementEnabled(buttonLogout);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonLogout);
                 Console.WriteLine("Button 'Reset App State':");
-                SeleniumSetMethods.ElementDisplayed(buttonResetappstate);
-                SeleniumSetMethods.ElementEnabled(buttonResetappstate);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(buttonResetappstate);
 
                 SeleniumSetMethods.StepStart("Clicks button 'X'.", "4");
                 SeleniumSetMethods.Clicks(buttonX);

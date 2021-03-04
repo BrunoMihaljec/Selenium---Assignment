@@ -27,11 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Drivers\" />
-    <Folder Include="Hooks\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Selenium Assignment\Selenium Assignment.csproj" />
   </ItemGroup>
 

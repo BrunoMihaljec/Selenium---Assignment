@@ -1,12 +1,13 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using Selenium_Assignment.Methods;
 using SeleniumExtras.WaitHelpers;
 using System;
 using TechTalk.SpecFlow;
-using Selenium_Assignment.Web_Driver;
 using NUnit.Framework;
+using Selenium_Assignment.Web_Driver;
+using Selenium_Assignment.PageObjects.Saucedemo;
+using Selenium_Assignment.PageObjects;
+using Selenium_Assignment.Methods;
 
 namespace SpecFlow_Assignment.StepDefinitions
 {
@@ -19,11 +20,9 @@ namespace SpecFlow_Assignment.StepDefinitions
         private string CorrectPassword;
         private string Message;
 
-        public SaucedemoLogInFeatureSteps() => WebDriver.driver = new ChromeDriver(@"C:\Users\mihal\OneDrive\Desktop\New folder (2)");       
-
         public void Dispose()
         {
-            
+
             if (WebDriver.driver != null)
             {
                 WebDriver.driver.Dispose();
@@ -34,31 +33,27 @@ namespace SpecFlow_Assignment.StepDefinitions
         [Given(@"I have navigated to saucedemo website")]
         public void GivenIHaveNavigatedToSaucedemoWebsite()
         {
+            
             WebDriver.driver.Navigate().GoToUrl("https://www.saucedemo.com/");
-            Assert.IsTrue(WebDriver.driver.Url.Contains("saucedemo"));
-            Assert.IsTrue(WebDriver.driver.Title.Contains("Swag Labs"));
+            SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "saucedemo");
         }
         
         [Given(@"I entered '(.*)' as username")]
         public void GivenIEnteredAsUsername(string p0)
         {
-            this.Username = p0;
-            var usernameInputBox = WebDriver.driver.FindElement(By.Name("user-name"));
+            this.Username = p0;            
             var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.Name("user-name")));
-            usernameInputBox.SendKeys(Username);
-            
+            SeleniumSetMethods.EnterText(SaucedemoLogInPageObjects.textboxUsername, Username);                        
         }
         
         [Given(@"I entered '(.*)' as password")]
         public void GivenIEnteredAsPassword(string p0)
         {
-            this.Password = p0;
-            var passwordInputBox = WebDriver.driver.FindElement(By.Name("password"));
+            this.Password = p0;            
             var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.Name("password")));
-            passwordInputBox.SendKeys(Password);
-            
+            SeleniumSetMethods.EnterText(SaucedemoLogInPageObjects.textboxPassword, Password);
         }
 
         
@@ -68,32 +63,29 @@ namespace SpecFlow_Assignment.StepDefinitions
         public void GivenIEnteredCorrectUsername(string p0)
         {
             this.CorrectUsername = p0;
-            var usernameInputBox = WebDriver.driver.FindElement(By.Name("user-name"));
             var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Name("user-name")));
-            usernameInputBox.SendKeys(CorrectUsername);
-            
+            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("user-name")));
+            SeleniumSetMethods.EnterText(SaucedemoLogInPageObjects.textboxUsername, CorrectUsername);
+
         }
 
         [Given(@"I entered correct password: '(.*)'")]
         public void GivenIEnteredCorrectPassword(string p0)
         {
             this.CorrectPassword = p0;
-            var passwordInputBox = WebDriver.driver.FindElement(By.Name("password"));
             var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.Name("password")));
-            passwordInputBox.SendKeys(CorrectPassword);
-            
+            SeleniumSetMethods.EnterText(SaucedemoLogInPageObjects.textboxPassword, CorrectPassword);
+
         }
 
 
         [When(@"I submit LOGIN button")]
         public void WhenISubmitLOGINButton()
-        {
-            var loginbutton = WebDriver.driver.FindElement(By.Id("login-button"));
+        {            
             var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id("login-button")));
-            loginbutton.Submit();
+            SeleniumSetMethods.Submits(SaucedemoLogInPageObjects.buttonLOGIN);
 
         }
         
@@ -102,19 +94,18 @@ namespace SpecFlow_Assignment.StepDefinitions
         [Then(@"the login should fail with '(.*)'")]
         public void ThenTheLoginShouldFailWith(string p0)
         {
-            this.Message = p0;
-            var message = WebDriver.driver.FindElement(By.XPath("//*[@id='login_button_container']/div/form/h3"));
+            this.Message = p0;           
             var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
-            string messagetext = message.Text;
+            string messagetext = SeleniumGetMethods.GetText(SaucedemoLogInPageObjects.textMessage);
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='login_button_container']/div/form/h3")));           
             Assert.IsTrue(messagetext.Contains(Message));
+            SeleniumGetMethods.VerifyText(messagetext, Message);
         }
         
         [Then(@"I should be navigated to inventory page")]
         public void ThenIShouldBeNavigatedToInventoryPage()
         {
-            Assert.IsTrue(WebDriver.driver.Url.Contains("inventory"));
-            Assert.IsTrue(WebDriver.driver.Title.Contains("Swag Labs"));
+            SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "inventory");
         }
         
         

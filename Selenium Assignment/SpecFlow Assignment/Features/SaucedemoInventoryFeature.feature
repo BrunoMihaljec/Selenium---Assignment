@@ -2,7 +2,7 @@
 As a developer
 I want to ensure functionality is working end to end
 
-@mytag
+@inventory
 	Scenario: Saucedemo inventory page test
 		Given I logged in 
 		And I navigated to saucedemo inventory page

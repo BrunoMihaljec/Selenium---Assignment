@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace Selenium_Assignment.PageObjects.Saucedemo
 {
-    static class SaucedemoCartPageObjects
+    public static class SaucedemoCartPageObjects
     {
 
         public static IWebElement buttonMenu  => WebDriver.driver.FindElement(By.Id("react-burger-menu-btn"));
@@ -58,11 +58,9 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
             SeleniumSetMethods.StepStart("Loads web page (https://www.saucedemo.com/cart.html).", "1");
             SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "cart");
             Console.WriteLine("Menu button:");
-            SeleniumSetMethods.ElementDisplayed(buttonMenu);
-            SeleniumSetMethods.ElementEnabled(buttonMenu);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonMenu);
             Console.WriteLine("Cart button:");
-            SeleniumSetMethods.ElementDisplayed(buttonCart);
-            SeleniumSetMethods.ElementEnabled(buttonCart);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonCart);
             string text = SeleniumGetMethods.GetText(textcart);
             SeleniumGetMethods.VerifyText(text, "1");
             Console.WriteLine("Main text:");
@@ -76,20 +74,15 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
             SeleniumGetMethods.VerifyText(text, "DESCRIPTION");
             SeleniumGetMethods.VerifyProduct(cartproductcontainer, "1\nSauce Labs Backpack\ncarry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.\n29.99REMOVE");
             Console.WriteLine("'CONTINUE SHOPPING' button:");
-            SeleniumSetMethods.ElementDisplayed(buttonContinue);
-            SeleniumSetMethods.ElementEnabled(buttonContinue);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonContinue);
             Console.WriteLine("'CHECKOUT' button:");
-            SeleniumSetMethods.ElementDisplayed(buttonCheckout);
-            SeleniumSetMethods.ElementEnabled(buttonCheckout);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonCheckout);
             Console.WriteLine("Twitter button:");
-            SeleniumSetMethods.ElementDisplayed(buttonTwitter);
-            SeleniumSetMethods.ElementEnabled(buttonTwitter);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonTwitter);
             Console.WriteLine("Fcebook button:");
-            SeleniumSetMethods.ElementDisplayed(buttonFacebook);
-            SeleniumSetMethods.ElementEnabled(buttonFacebook);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonFacebook);
             Console.WriteLine("LinkedIn button:");
-            SeleniumSetMethods.ElementDisplayed(buttonLinkedIn);
-            SeleniumSetMethods.ElementEnabled(buttonLinkedIn);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonLinkedIn);
             text = SeleniumGetMethods.GetText(textBottom);
             SeleniumGetMethods.VerifyText(text, "© 2021 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy");
 
@@ -98,20 +91,15 @@ namespace Selenium_Assignment.PageObjects.Saucedemo
             var wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='menu_button_container']/div/div[3]/div[2]/div")));
             Console.WriteLine("Button 'X':");
-            SeleniumSetMethods.ElementDisplayed(buttonX);
-            SeleniumSetMethods.ElementEnabled(buttonX);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonX);
             Console.WriteLine("Button 'All Items':");
-            SeleniumSetMethods.ElementDisplayed(buttonAllItems);
-            SeleniumSetMethods.ElementEnabled(buttonAllItems);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonAllItems);
             Console.WriteLine("Button 'About':");
-            SeleniumSetMethods.ElementDisplayed(buttonAbout);
-            SeleniumSetMethods.ElementEnabled(buttonAbout);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonAbout);
             Console.WriteLine("Button 'Logout':");
-            SeleniumSetMethods.ElementDisplayed(buttonLogout);
-            SeleniumSetMethods.ElementEnabled(buttonLogout);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonLogout);
             Console.WriteLine("Button 'Reset App State':");
-            SeleniumSetMethods.ElementDisplayed(buttonResetAppState);
-            SeleniumSetMethods.ElementEnabled(buttonResetAppState);
+            SeleniumSetMethods.ElementDisplayedAndEnabled(buttonResetAppState);
 
             SeleniumSetMethods.StepStart("Clicks button 'X' ", "3");
             SeleniumSetMethods.Clicks(buttonX);

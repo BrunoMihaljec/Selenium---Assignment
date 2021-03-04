@@ -18,11 +18,9 @@ namespace Selenium_Assignment.PageObjects
     
         public static void SearchProduct(string search)
         {
-            try
-            {
+           
                 Console.WriteLine("Textbox 'Search':");
-                SeleniumSetMethods.ElementDisplayed(txtSearch);
-                SeleniumSetMethods.ElementEnabled(txtSearch);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(txtSearch);
 
                 SeleniumSetMethods.StepStart("Clears textbox 'Search'.", "3");
                 SeleniumSetMethods.Clears(txtSearch);
@@ -33,8 +31,7 @@ namespace Selenium_Assignment.PageObjects
                 string enteredtext = SeleniumGetMethods.GetValue(txtSearch);
                 SeleniumGetMethods.VerifyText(enteredtext, search);
                 Console.WriteLine("Button 'Search':");
-                SeleniumSetMethods.ElementDisplayed(btnSearch);
-                SeleniumSetMethods.ElementEnabled(btnSearch);
+                SeleniumSetMethods.ElementDisplayedAndEnabled(btnSearch);
 
                 SeleniumSetMethods.StepStart("Submits button 'Search'.", "5");
                 SeleniumSetMethods.Submits(btnSearch);
@@ -42,12 +39,7 @@ namespace Selenium_Assignment.PageObjects
                 SeleniumSetMethods.WaitForPageToLoad(WebDriver.driver, 35);
                 SeleniumGetMethods.PageLoaded(urlSearch, "search");
                 Console.WriteLine("Searched Links web shop for '{0}'!", search);
-
-            }
-            catch(Exception e)
-            {
-                throw new Exception(String.Format("Test failed! {0}", e.StackTrace));
-            }
+        
         }
     }
 }

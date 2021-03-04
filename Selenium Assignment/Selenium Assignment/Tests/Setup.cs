@@ -15,6 +15,7 @@ namespace Selenium_Assignment.Tests
         public void Initialize()
         {
             WebDriver.driver = new ChromeDriver(@"C:\Users\mihal\OneDrive\Desktop\New folder (2)");
+            
         }
 
         [TearDown]
