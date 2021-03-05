@@ -14,16 +14,14 @@ namespace Selenium_Assignment.PageObjects
 {
     static class LinksProductsPageObject
     {
-        
-        public static IWebElement btnRačunala => WebDriver.driver.FindElement(By.XPath("/html/body/div[5]/div[8]/div[6]/div[1]/div[1]/div[2]/ul[2]/li/ul/li[5]"));
+
+        public static IWebElement btnRačunala => WebDriver.driver.FindElement(By.XPath("/html/body/div[6]/div[8]/div[6]/div[1]/div[1]/div[2]/ul[2]/li/ul/li[5]/a"));
         
 
         public static void SelectPCs()
         {
-           
                 SeleniumSetMethods.StepStart("Loads web page (https://www.links.hr/hr/).", "1");
                 SeleniumGetMethods.PageLoaded(WebDriver.driver.Url, "links");
-                
                 
                 Console.WriteLine("Button 'Računala':");                           
                 SeleniumSetMethods.ElementDisplayedAndEnabled(btnRačunala);
